@@ -25,8 +25,8 @@ class Hewan {
 public class codelab1 {
     public static void main(String[] args) {
         // Membuat objek Hewan
-        Hewan hewan1 = new Hewan("asu", "Mommylia", "gok gok gok");
-        Hewan hewan2 = new Hewan("krakatau", "gunung","RORRRR");
+        Hewan hewan1 = new Hewan("Anjing", "Mamalia", "gok gok gok");
+        Hewan hewan2 = new Hewan("Monyet", "Mamalia","uu aa");
 
         // Memanggil method tampilkanInfo()
         hewan1.tampilkanInfo();
