@@ -1,0 +1,2 @@
+public class codelab1 {
+}
