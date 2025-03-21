@@ -56,17 +56,17 @@ public class codelab1 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        Hero Arthur = new Hero("Arthur", 5000);
-        Monster Dragon = new Monster("Dragon", 6000);
+        Hero Kalea = new Hero("Kalea", 5000);
+        Monster Gloo = new Monster("Gloo", 6000);
 
         System.out.println("Pertarungan dimulai!\n");
-        System.out.println(Arthur.getNama() + " vs " + Dragon.getNama());
+        System.out.println(Kalea.getNama() + " vs " + Gloo.getNama());
 
         int ronde = 1;
 
-        while (Arthur.getKesehatan() > 0 && Dragon.getKesehatan() > 0) {
+        while (Kalea.getKesehatan() > 0 && Gloo.getKesehatan() > 0) {
             System.out.println("Ronde " + ronde);
-            System.out.println("Pilihan serangan " + Arthur.getNama() + ":");
+            System.out.println("Pilihan serangan " + Kalea.getNama() + ":");
             System.out.println("1. Slash (500 damage)");
             System.out.println("2. Power Strike (1000 damage)");
             System.out.println("3. Ultimate Slash (2000 damage)");
@@ -75,32 +75,32 @@ public class codelab1 {
             int pilihan = scanner.nextInt();
 
             if (pilihan == 1) {
-                Arthur.serang(Dragon, 500, "Slash");
+                Kalea.serang(Gloo, 500, "Slash");
             } else if (pilihan == 2) {
-                Arthur.serang(Dragon, 1000, "Power Strike");
+                Kalea.serang(Gloo, 1000, "Power Strike");
             } else if (pilihan == 3) {
-                Arthur.serang(Dragon, 2000, "Ultimate Slash");
+                Kalea.serang(Gloo, 2000, "Ultimate Slash");
             } else if (pilihan == 4) {
-                System.out.println(Arthur.getNama() + " memiliki kesehatan: " + Arthur.getKesehatan());
-                System.out.println(Dragon.getNama() + " memiliki kesehatan: " + Dragon.getKesehatan());
+                System.out.println(Kalea.getNama() + " memiliki kesehatan: " + Kalea.getKesehatan());
+                System.out.println(Gloo.getNama() + " memiliki kesehatan: " + Gloo.getKesehatan());
                 continue;
             } else {
                 System.out.println("Pilihan tidak valid!");
                 continue;
             }
 
-            if (Dragon.getKesehatan() > 0) {
-                System.out.println(Dragon.getNama() + " menyerang balik!");
-                Dragon.serang(Arthur, 750, "Fire Breath");
+            if (Gloo.getKesehatan() > 0) {
+                System.out.println(Gloo.getNama() + " menyerang balik!");
+                Gloo.serang(Kalea, 750, "Fire Breath");
             }
 
             ronde++;
         }
 
-        if (Arthur.getKesehatan() > 0) {
-            System.out.println(Arthur.getNama() + " memenangkan pertarungan!");
+        if (Gloo.getKesehatan() == 0 || Gloo.getKesehatan() < 0) {
+            System.out.println(Kalea.getNama() + " memenangkan pertarungan!");
         } else {
-            System.out.println(Dragon.getNama() + " memenangkan pertarungan!");
+            System.out.println(Gloo.getNama() + " memenangkan pertarungan!");
         }
 
         scanner.close();
