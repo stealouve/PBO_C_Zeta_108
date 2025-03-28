@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Tugas2.iml" filepath="$PROJECT_DIR$/Tugas2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tugas.iml" filepath="$PROJECT_DIR$/tugas.iml" />
     </modules>
   </component>
 </project>
