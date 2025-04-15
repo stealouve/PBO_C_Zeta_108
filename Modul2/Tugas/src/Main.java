@@ -1,51 +1,53 @@
-class KarakterGame {
-    private String nama;
-    private int kesehatan;
-
-    public KarakterGame(String nama, int kesehatan) {
-        this.nama = nama;
-        this.kesehatan = kesehatan;
-    }
-
-    public String getNama() {
-        return nama;
-    }
-
-    public void setNama(String nama) {
-        this.nama = nama;
-    }
-
-    public int getKesehatan() {
-        return kesehatan;
-    }
-
-    public void setKesehatan(int kesehatan) {
-        this.kesehatan = kesehatan;
-    }
-
-    public void serang(KarakterGame target) {
-    } //superclass
-}
-
-class Pahlawan extends KarakterGame {
-
-    public Pahlawan(String nama, int kesehatan) {
-        super(nama, kesehatan);
-    }
-
-    @Override
-    public void serang(KarakterGame target) {
-        System.out.println(getNama() + " menyerang " + target.getNama() + " menggunakan Lantern Flare!");
-        target.setKesehatan(target.getKesehatan() - 40);
-        System.out.println("Kesehatan " + target.getNama() + " sekarang: " + target.getKesehatan());
-    }
-}
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Pahlawan pahlawan = new Pahlawan("Zhuxin", 150);
-        KarakterGame musuh = new KarakterGame("Xavier", 200);
+        Scanner scanner = new Scanner(System.in);
 
-        pahlawan.serang(musuh);
+        System.out.println("Pilih jenis login:");
+        System.out.println("1. Admin");
+        System.out.println("2. Mahasiswa");
+        System.out.print("Masukkan pilihan: ");
+        int pilihan = scanner.nextInt();
+        scanner.nextLine(); // Membersihkan buffer
+
+        if (pilihan == 1) {
+            // Login Admin
+            System.out.print("Masukkan Username: ");
+            String username = scanner.nextLine();
+            System.out.print("Masukkan Password: ");
+            String password = scanner.nextLine();
+
+            String nimLastThree = "108"; // Sesuai dengan 3 digit terakhir NIM Anda
+            String validUsername = "Jeta" + nimLastThree;
+            String validPassword = "bebas" + nimLastThree;
+
+            if (username.equals(validUsername) && password.equals(validPassword)) {
+                System.out.println("Login Admin berhasil!");
+            } else {
+                System.out.println("Login gagal! Username atau password salah.");
+            }
+        } else if (pilihan == 2) {
+            // Login Mahasiswa
+            System.out.print("Masukkan Nama: ");
+            String nama = scanner.nextLine();
+            System.out.print("Masukkan NIM: ");
+            String nim = scanner.nextLine();
+
+            String validNama = "Nama Kalian"; // Ganti dengan nama Anda
+            String validNim = "NIM Kalian"; // Ganti dengan NIM Anda
+
+            if (nama.equals(validNama) && nim.equals(validNim)) {
+                System.out.println("Login Mahasiswa berhasil!");
+                System.out.println("Nama: " + nama);
+                System.out.println("NIM: " + nim);
+            } else {
+                System.out.println("Login gagal! Nama atau NIM salah.");
+            }
+        } else {
+            System.out.println("Pilihan tidak valid.");
+        }
+
+        scanner.close();
     }
 }
