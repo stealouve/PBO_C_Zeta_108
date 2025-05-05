@@ -55,8 +55,7 @@ class Admin extends User {
     }
 
     @Override
-    public void displayInfo() {
-        super.displayInfo();
+    public void displayInfo() { super.displayInfo();
     }
 }
 
@@ -119,7 +118,7 @@ class LoginSystem {
                 mahasiswa.login(nama, nim);
                 mahasiswa.displayInfo();
             } else if (pilihan == 3) {
-                System.out.println("Terima kasih!");
+                System.out.println("Anda telah Logout,  Terima kasih!");
                 break;
             } else {
                 System.out.println("Pilihan tidak valid, coba lagi.");
