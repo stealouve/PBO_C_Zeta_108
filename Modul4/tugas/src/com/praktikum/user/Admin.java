@@ -46,7 +46,7 @@ public class Admin extends User implements AdminActions {
             System.out.println("1. Kelola Laporan Barang");
             System.out.println("2. Kelola Data Mahasiswa");
             System.out.println("3. Keluar");
-            System.out.println("Pilih Menu : ");
+            System.out.print("Pilih Menu : ");
             pilihan = scanner.nextInt();
 
             if(pilihan == 1){

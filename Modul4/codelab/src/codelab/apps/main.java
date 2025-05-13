@@ -1,8 +1,6 @@
 package codelab.apps;
 
-import codelab.perpustakaan.Anggota;
-import codelab.perpustakaan.Fiksi;
-import codelab.perpustakaan.NonFiksi;
+import codelab.perpustakaan.*;
 
 public class main {
     public static void main(String[] args) {
