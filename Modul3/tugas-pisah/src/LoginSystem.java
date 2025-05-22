@@ -3,16 +3,13 @@ import java.util.Scanner;
 public class LoginSystem {
     private Admin admin;
     private Mahasiswa mahasiswa;
-    private test test;
 
     public LoginSystem() {
-        admin = new Admin("Daffa", "061", "admin", "kucingterbang");
-        mahasiswa = new Mahasiswa("Daffa", "061");
-        test = new test("nim","pic");
+        admin = new Admin("Zeta", "108", "admin", "kucingterbang");
+        mahasiswa = new Mahasiswa("Zeta", "108");
     }
 
     public void menu() {
-        System.out.println("login gagal!");
         System.out.println("Pilih login sebagai: ");
         System.out.println("1. Admin");
         System.out.println("2. Mahasiswa");

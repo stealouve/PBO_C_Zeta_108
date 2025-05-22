@@ -38,5 +38,5 @@ public class codelab1{
         System.out.println("Umur            : " + umur + " tahun");
 
         scanner.close();
-    }
+    }
 }

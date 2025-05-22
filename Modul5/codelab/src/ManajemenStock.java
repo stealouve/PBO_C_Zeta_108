@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class ManajemenStock {
     public static void main(String[] args) {
-        ArrayList<Barang> daftarBarang = new ArrayList<>();
+        ArrayList<Barang> daftarBarang = new ArrayList<>(); //objek ArrayList
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -33,7 +33,8 @@ public class ManajemenStock {
                 try {
                     int stok = scanner.nextInt();
                     scanner.nextLine();
-                    daftarBarang.add(new Barang(nama, stok));
+                    daftarBarang.add(new Barang(nama, stok)); // pake add(index, value) : Memasukkan value tepat sebelum index yang ditentukan, menggeser nilai sebelumnya ke sebelah kanan
+
                     System.out.println("Barang " + nama + " berhasil ditambahkan.\n");
                 } catch (InputMismatchException e) {
                     System.out.println("Input stok harus berupa angka!");
@@ -45,8 +46,8 @@ public class ManajemenStock {
                     System.out.println("Stok barang kosong.");
                 } else {
                     System.out.println("\n=== Daftar Barang ===");
-                    for (int i = 0; i < daftarBarang.size(); i++) {
-                        Barang b = daftarBarang.get(i);
+                    for (int i = 0; i < daftarBarang.size(); i++) { // size() : Mengembalikan jumlah elemen pada array list
+                        Barang b = daftarBarang.get(i); // get(index) : Mengembalikan nilai pada index yang ditentukan
                         System.out.println((i + 1) + ". Nama: " + b.getNama() + ", Stok: " + b.getStock());
                     }
                     System.out.println(" ");
@@ -79,11 +80,11 @@ public class ManajemenStock {
 
                     Barang barang = daftarBarang.get(indeks);
 
-                    if (jumlah > barang.getStock()) {
-                        System.out.println("Stok tidak cukup! Stok tersedia: " + barang.getStock());
-                    } else {
-                        barang.setStock(barang.getStock() - jumlah);
+                    try {
+                        barang.kurangiStok(jumlah);
                         System.out.println("Stok berhasil dikurangi.");
+                    } catch (StockTidakCukupException e) {
+                        System.out.println(e.getMessage());
                     }
 
                 } catch (InputMismatchException e) {

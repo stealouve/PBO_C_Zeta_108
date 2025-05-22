@@ -9,7 +9,7 @@ public class Main {
         System.out.println("2. Mahasiswa");
         System.out.print("Masukkan pilihan: ");
         int pilihan = scanner.nextInt();
-        scanner.nextLine(); // Membersihkan buffer
+        scanner.nextLine();
 
         if (pilihan == 1) {
             // Login Admin
@@ -18,7 +18,7 @@ public class Main {
             System.out.print("Masukkan Password: ");
             String password = scanner.nextLine();
 
-            String nimLastThree = "108"; // Sesuai dengan 3 digit terakhir NIM Anda
+            String nimLastThree = "108";
             String validUsername = "Jeta" + nimLastThree;
             String validPassword = "bebas" + nimLastThree;
 
@@ -34,8 +34,8 @@ public class Main {
             System.out.print("Masukkan NIM: ");
             String nim = scanner.nextLine();
 
-            String validNama = "Nama Kalian"; // Ganti dengan nama Anda
-            String validNim = "NIM Kalian"; // Ganti dengan NIM Anda
+            String validNama = "Nama Kalian";
+            String validNim = "NIM Kalian";
 
             if (nama.equals(validNama) && nim.equals(validNim)) {
                 System.out.println("Login Mahasiswa berhasil!");

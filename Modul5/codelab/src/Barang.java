@@ -18,4 +18,10 @@ public class Barang {
     public void setStock(int stock) {
         this.stock = stock;
     }
+    public void kurangiStok(int jumlah) {
+        if (jumlah > stock) {
+            throw new StockTidakCukupException("Stok tidak cukup! Tersedia: " + stock);
+        }
+        stock -= jumlah;
+    }
 }
