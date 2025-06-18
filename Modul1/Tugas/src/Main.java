@@ -12,15 +12,14 @@ public class Main {
         scanner.nextLine();
 
         if (pilihan == 1) {
-            // Login Admin
             System.out.print("Masukkan Username: ");
             String username = scanner.nextLine();
             System.out.print("Masukkan Password: ");
             String password = scanner.nextLine();
 
-            String nimLastThree = "108";
-            String validUsername = "Jeta" + nimLastThree;
-            String validPassword = "bebas" + nimLastThree;
+            String NIMakhir = "108";
+            String validUsername = "Zeta" + NIMakhir;
+            String validPassword = "jeta" + NIMakhir;
 
             if (username.equals(validUsername) && password.equals(validPassword)) {
                 System.out.println("Login Admin berhasil!");
@@ -28,14 +27,13 @@ public class Main {
                 System.out.println("Login gagal! Username atau password salah.");
             }
         } else if (pilihan == 2) {
-            // Login Mahasiswa
             System.out.print("Masukkan Nama: ");
             String nama = scanner.nextLine();
             System.out.print("Masukkan NIM: ");
             String nim = scanner.nextLine();
 
-            String validNama = "Nama Kalian";
-            String validNim = "NIM Kalian";
+            String validNama = "Zeta";
+            String validNim = "108";
 
             if (nama.equals(validNama) && nim.equals(validNim)) {
                 System.out.println("Login Mahasiswa berhasil!");

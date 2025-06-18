@@ -1,61 +1,89 @@
 package com.praktikum.GUI;
 
+import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
-public class LoginPane extends VBox {
-    private Stage primaryStage;
+import com.praktikum.main.LoginSystem;
+import com.praktikum.data.DataStore;
+import com.praktikum.user.Admin;
+import com.praktikum.user.Mahasiswa;
+import com.praktikum.user.User;
 
-    public LoginPane(Stage primaryStage) {
-        this.primaryStage = primaryStage;
-        createLoginUI();
+public class LoginPane {
+
+    private VBox root;
+    private ComboBox<String> userTypeComboBox;
+    private TextField idField;
+    private PasswordField passwordField;
+    private Label messageLabel;
+
+    public LoginPane() {
+        initializeUI();
     }
 
-    private void createLoginUI() {
-        Label titleLabel = new Label("Login Sistem");
-        titleLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
+    private void initializeUI() {
+        Label titleLabel = new Label("Login Sistem Lost & Found");
+        titleLabel.setFont(new Font("System Bold", 18));
 
-        TextField usernameField = new TextField();
-        usernameField.setPromptText("Username");
+        userTypeComboBox = new ComboBox<>();
+        userTypeComboBox.setItems(FXCollections.observableArrayList("Admin", "Mahasiswa"));
+        userTypeComboBox.setValue("Mahasiswa");
 
-        PasswordField passwordField = new PasswordField();
-        passwordField.setPromptText("Password");
+        idField = new TextField();
+        idField.setPromptText("Username / Nama");
+
+        passwordField = new PasswordField();
+        passwordField.setPromptText("Password / NIM");
 
         Button loginButton = new Button("Login");
+        loginButton.setPrefWidth(80);
 
-        loginButton.setOnAction(e -> {
-            String username = usernameField.getText().trim();
-            String password = passwordField.getText().trim();
-            handleLogin(username, password);
-        });
+        messageLabel = new Label();
+        messageLabel.setTextFill(Color.RED);
 
-        this.setAlignment(Pos.CENTER);
-        this.setPadding(new Insets(20));
-        this.setSpacing(10);
-        this.getChildren().addAll(titleLabel, usernameField, passwordField, loginButton);
+        loginButton.setOnAction(event -> handleLogin());
+
+        root = new VBox(10);
+        root.setAlignment(Pos.CENTER);
+        root.setPadding(new Insets(20, 20, 20, 20));
+        root.getChildren().addAll(titleLabel, userTypeComboBox, idField, passwordField, loginButton, messageLabel);
     }
 
-    private void handleLogin(String username, String password) {
-        if (username.equals("admin") && password.equals("admin123")) {
-            AdminDashboard adminDashboard = new AdminDashboard();
-            primaryStage.setScene(new Scene(adminDashboard, 600, 400));
-        } else if (username.equals("mhs01") && password.equals("mhs123")) {
-            MahasiswaDashboard mahasiswaDashboard = new MahasiswaDashboard();
-            primaryStage.setScene(new Scene(mahasiswaDashboard, 600, 400));
+    private void handleLogin() {
+        String userType = userTypeComboBox.getValue();
+        String id = idField.getText();
+        String passwordOrNim = passwordField.getText();
+
+        if (userType == null || id.isEmpty() || passwordOrNim.isEmpty()) {
+            messageLabel.setText("Semua field harus diisi!");
+            return;
+        }
+
+        User authenticatedUser  = LoginSystem.authenticateUser (userType, id, passwordOrNim);
+
+        if (authenticatedUser  != null) {
+            messageLabel.setText("Login Berhasil!");
+            if (authenticatedUser  instanceof Admin) {
+                MainApp.loadAdminDashboard();
+            } else if (authenticatedUser  instanceof Mahasiswa) {
+                MainApp.loadMahasiswaDashboard((Mahasiswa) authenticatedUser );
+            }
         } else {
-            showAlert("Login Gagal", "Username atau password salah.");
+            messageLabel.setText("Login gagal, periksa kredensial.");
         }
     }
 
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
+    public Parent getRoot() {
+        return root;
     }
 }
