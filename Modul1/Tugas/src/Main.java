@@ -32,7 +32,7 @@ public class Main {
             System.out.print("Masukkan NIM: ");
             String nim = scanner.nextLine();
 
-            String validNama = "Zeta";
+            String validNama = "Wira";
             String validNim = "108";
 
             if (nama.equals(validNama) && nim.equals(validNim)) {
